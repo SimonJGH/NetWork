@@ -82,9 +82,11 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
     // Bintray网站的用户名，我这里把下面bintray.user这个键的值写在local.properties文件
-    user = properties.getProperty("bintray.user")
+   // user = properties.getProperty("bintray.user")
+    user = "Yu Deshui"
     // Bintray网站的的ApiKey，前面步骤有提到，我这里把下面bintray.apikey这个键的值写在local.properties文件
-    key = properties.getProperty("bintray.apikey")
+    // key = properties.getProperty("bintray.apikey")
+    key = "3e81b1fba5db7d16f55d220bcbf77889fa308078"
 
     configurations = ['archives']
     pkg {
