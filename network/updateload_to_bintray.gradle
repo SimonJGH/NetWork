@@ -7,11 +7,11 @@ def siteUrl = 'https://github.com/SimonJGH/NetWork' // 项目主页。
 def gitUrl = 'https://github.com/SimonJGH/NetWork.git' // Git仓库的url。
 
 // 唯一包名，比如implementation 'groupId:artifactId:version'中的groupId就是这里配置的。
-group = "com.simon"
+group = "com.yds"
 //项目名称, 比如implementation 'groupId:artifactId:version'中的artifactId就是这里配置的。
 project.archivesBaseName = "network"
 //项目引用的版本号，比如implementation 'groupId:artifactId:version'中的version就是这里配置的。
-version = "1.0.1"
+version = "1.0.2"
 
 install {
     repositories.mavenInstaller {
@@ -60,6 +60,7 @@ task sourcesJar(type: Jar) {
 
 // 生成jarDoc的task，不需要修改。
 task javadoc(type: Javadoc) {
+    options.encoding = "UTF-8"
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
     // destinationDir = file("../javadoc/")
@@ -82,17 +83,15 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
     // Bintray网站的用户名，我这里把下面bintray.user这个键的值写在local.properties文件
-   // user = properties.getProperty("bintray.user")
-    user = "Yu Deshui"
+    user = properties.getProperty("bintray.user")
     // Bintray网站的的ApiKey，前面步骤有提到，我这里把下面bintray.apikey这个键的值写在local.properties文件
-    // key = properties.getProperty("bintray.apikey")
-    key = "3e81b1fba5db7d16f55d220bcbf77889fa308078"
+    key = properties.getProperty("bintray.apikey")
 
     configurations = ['archives']
     pkg {
-        repo = "NetWorkUtil"  //Repository名字 需要自己在bintray网站上先添加
+        repo = "network"  //Repository名字 需要自己在bintray网站上先添加
         name = "network"// 发布到Bintray上的项目名字,你在bintray网站上新建的包名
-        userOrg = 'ydsimon'//Bintray的组织id，可以填写的你的开发者的id
+        userOrg = 'simontobe'//Bintray的组织id，可以填写的你的开发者的id
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
