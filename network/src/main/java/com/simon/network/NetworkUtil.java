@@ -17,6 +17,7 @@ import android.net.NetworkInfo;
 public class NetworkUtil {
 
     private static ConnectivityManager connManager = null;
+    private static String aaa;
 
     /**
      * 判断网络是否连接（基站或wifi）
